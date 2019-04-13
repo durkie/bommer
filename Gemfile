@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.2.10'
+gem 'rails', '4.2.11'
 gem 'fast_jsonapi'
 gem 'pg', '~> 0.20'
 # gem 'sidekiq'
 # gem 'sidekiq-cron'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
