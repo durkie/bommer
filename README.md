@@ -2,6 +2,8 @@
 
 From a fresh installation (Ubuntu 18.04), you'll need to install a few things:
 ```
+git clone https://github.com/durkie/bommer.git
+cd bommer
 apt-get update
 apt install ruby ruby-bundler ruby-dev gcc zlib1g-dev libxml2-dev postgresql libpq-dev
 bundle install
