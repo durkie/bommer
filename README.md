@@ -1,18 +1,31 @@
-* Installation
+# Installation
+
+From a fresh installation (Ubuntu 18.04), you'll need to install a few things:
+```
+apt-get update
+apt install ruby ruby-bundler ruby-dev gcc zlib1g-dev libxml2-dev postgresql libpq-dev
+bundle install
+```
+
+Set up postgres, with your username in place of `<USERNAME>`:
+```
+echo "create role <USERNAME> with login createdb" | sudo -u postgres psql
+```
 
 Set up the database, seed with data:
 ```
-bundle install
 rake db:create
 rake db:migrate
 rake db:seed
 ```
 
-* Operation
+# Operation
 
-Run the server via `rails s`, which will start it listening on localhost:3000
+Run the server via `rails s`, which will start it listening on localhost:3000. Alternatively, you can supply a source IP to bind to with "rails s -b www.xxx.yyy.zzz"
 
-API:
+
+# API
+
 * Listing all parts:
 `GET http://localhost:3000/api/v1/parts`
 
@@ -101,6 +114,6 @@ This will also remove it from any assemblies it was a member of and mark those a
 * Listing all top-level assemblies:
 `GET http://localhost:3000/api/v1/assemblies/top_level`
 
-* Monitoring
+# Monitoring
 
 Sidekiq is installed and should be mostly configured, but is not enabled by default. If you wish to enable it, provision a redis server for it to use, uncomment the sidekiq sections from the Gemfile, routes.rb and config/initializers/sidekiq.rb and run `bundle install`. It has a daily cron job that runs at 16:45 each day and emails you a list which Assemblies had Parts deleted from them and are in need of maintenance.
